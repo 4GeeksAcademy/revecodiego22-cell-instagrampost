@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Post 4 Geeks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <article class="post">
+    <header class="post-header">
+      <div class="header-left">
+        <img
+          class="avatar"
+          src="https://fastly.picsum.photos/id/295/200/200.jpg?hmac=nsWHMt5f11TALPFeS_0t6tIlO2CkViBNAbAbSlhu8P4"
+          alt="Perfil"
+        >
+        <span class="header-title">Instagram Post 4 Geeks</span>
+      </div>
+      <i class="fa-solid fa-ellipsis menu-icon" aria-label="Menú"></i>
+    </header>
+
+    <div class="carousel">
+      <button class="carousel-btn prev-photo-btn" id="prev-photo-btn" aria-label="Foto anterior">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <img
+        id="carousel-image"
+        class="post-image"
+        src="https://fastly.picsum.photos/id/118/200/300.jpg?hmac=y5ur5cobUmPTuS2C6FvS8uE6IYI07GiElMbvlmulnUA"
+        alt="Amanecer"
+      >
+      <button class="carousel-btn next-photo-btn" id="next-photo-btn" aria-label="Siguiente foto">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <section class="post-actions">
+      <div class="left-actions">
+        <i class="fa-solid fa-heart" aria-label="Me gusta"></i>
+        <i class="fa-regular fa-message" aria-label="Mensajes"></i>
+        <i class="fa-solid fa-share" aria-label="Compartir"></i>
+      </div>
+      <i class="fa-regular fa-bookmark save-icon" aria-label="Guardar"></i>
+    </section>
+
+    <p class="likes">
+      <i class="fa-solid fa-heart small-heart" aria-hidden="true"></i>
+      <span>212 Likes</span>
+    </p>
+
+    <p class="caption"><b>Diego Reveco</b> <span id="photo-description"></span> <span id="photo-hashtags"></span></p>
+  </article>
+
+  <script>
+    const photos = [
+      "https://fastly.picsum.photos/id/118/200/300.jpg?hmac=y5ur5cobUmPTuS2C6FvS8uE6IYI07GiElMbvlmulnUA",
+      "https://picsum.photos/seed/geeks-random-1/1200/800",
+      "https://picsum.photos/seed/geeks-random-2/1200/800"
+    ];
+    const descriptions = [
+      "disfrutando el atardecer",
+      "un momento perfecto",
+      "vistas que inspiran",
+      "colores que enamoran",
+      "hoy fue un gran dia"
+    ];
+    const hashtags = [
+      "#sunset",
+      "#travel",
+      "#nature",
+      "#photooftheday",
+      "#vibes",
+      "#landscape",
+      "#instamood",
+      "#adventure"
+    ];
+
+    let currentPhotoIndex = 0;
+    const carouselImage = document.getElementById("carousel-image");
+    const descriptionElement = document.getElementById("photo-description");
+    const hashtagsElement = document.getElementById("photo-hashtags");
+    const prevPhotoButton = document.getElementById("prev-photo-btn");
+    const nextPhotoButton = document.getElementById("next-photo-btn");
+
+    function getRandomItem(items) {
+      return items[Math.floor(Math.random() * items.length)];
+    }
+
+    function getRandomHashtags(allHashtags, count) {
+      const shuffled = [...allHashtags].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    }
+
+    function setInitialCaption() {
+      descriptionElement.textContent = getRandomItem(descriptions);
+      hashtagsElement.textContent = getRandomHashtags(hashtags, 3).join(" ");
+    }
+
+    prevPhotoButton.addEventListener("click", () => {
+      currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+      carouselImage.src = photos[currentPhotoIndex];
+    });
+
+    nextPhotoButton.addEventListener("click", () => {
+      currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+      carouselImage.src = photos[currentPhotoIndex];
+    });
+
+    setInitialCaption();
+  </script>
+</body>
+</html>

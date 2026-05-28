@@ -1,0 +1,165 @@
+:root {
+  --text: #111;
+  --muted: #666;
+  --border: #dbdbdb;
+  --bg: #fafafa;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  padding: 20px;
+}
+
+.post {
+  width: 515px;
+  max-width: 100%;
+  min-height: 804px;
+  background: var(--white);
+  border: 2px solid #1f1f1f;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff7b54;
+}
+
+.header-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.menu-icon {
+  font-size: 18px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.carousel {
+  position: relative;
+}
+
+.post-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.prev-photo-btn {
+  left: 12px;
+}
+
+.next-photo-btn {
+  right: 12px;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+
+.left-actions {
+  display: flex;
+  gap: 14px;
+  font-size: 22px;
+}
+
+.save-icon {
+  font-size: 22px;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.likes .small-heart {
+  font-size: 14px;
+  color: #111;
+}
+
+.caption {
+  padding: 0 12px 14px;
+  font-size: 14px;
+}
+
+.caption b {
+  margin-right: 6px;
+}
+
+@media (max-width: 540px) {
+  .post {
+    width: 100%;
+    min-height: auto;
+    border-width: 1px;
+  }
+
+  .post-image {
+    height: 62vw;
+    min-height: 260px;
+  }
+
+  .likes {
+    font-size: 14px;
+  }
+
+  .caption {
+    font-size: 14px;
+  }
+}
